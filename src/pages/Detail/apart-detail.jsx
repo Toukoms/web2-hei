@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import "./apart-detail.css";
 
 const ApartDetail = () => {
   let { id } = useParams();
@@ -8,28 +9,26 @@ const ApartDetail = () => {
 
   useEffect(() => {
     const getApart = async () => {
-      const res = await fetch(`http://localhost:4000/apartments/${id}`)
+      const res = await fetch(`http://localhost:4000/apartments/${id}`);
       if (res.ok) {
-        const jsonApart = await res.json()
-        setApart(jsonApart)
+        const jsonApart = await res.json();
+        setApart(jsonApart);
       }
-    }
-    getApart()
-  }, [id])
+    };
+    getApart();
+  }, [id]);
 
   return (
-    <section id={`Apart_detail_${apart.id}`}>
+    <section id={`Apart_detail_${apart.id}`} className="apart-detail">
       <div className="image">
         <img src={apart.picture} alt={`Apart ${apart.id}`} />
       </div>
       <span className="price">
-          {apart.price}Ariary<span>/ month</span>
-        </span>
-      <p>
-        {apart.description}
-      </p>
+        {apart.price}Ariary<span>/ month</span>
+      </span>
+      <p>{apart.description}</p>
     </section>
-  )
-}
+  );
+};
 
-export default ApartDetail
+export default ApartDetail;

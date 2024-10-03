@@ -1,0 +1,40 @@
+section.apart-detail {
+  width: 100vw;
+  min-height: 50dvh;
+  padding: 2rem;
+  margin-top: 2rem;
+
+  & div.image {
+    width: 100%;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  & span.price {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #007bff;
+
+    & span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #999;
+      margin-left: 0.25rem;
+    }
+  }
+
+}

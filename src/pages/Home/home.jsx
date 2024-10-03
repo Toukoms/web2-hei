@@ -18,7 +18,6 @@ const Home = () => {
         const jsonAparts = await res.json();
         if (jsonAparts) {
           setAparts(jsonAparts);
-          setFilteredAparts(jsonAparts);
         }
       }
     };
@@ -35,6 +34,20 @@ const Home = () => {
   }, [aparts, filterInput.search]);
 
   useEffect(() => {
+    let maxPrice = 0
+    aparts.forEach((apart) => {
+      if (apart.price > maxPrice) {
+        maxPrice = apart.price
+      }
+    })
+
+    setFilterInput((prevValue) => {
+      return {
+        ...prevValue,
+        "max-price": maxPrice,
+      };
+    });
+
     setFilteredAparts(() => {
       let filteredApart = aparts.filter(
         (apart) =>
@@ -43,7 +56,7 @@ const Home = () => {
       );
       return filteredApart;
     });
-  }, [aparts, filterInput]);
+  }, [aparts, filterInput["min-price"], filterInput["max-price"]]);
 
   const handleChange = (event) => {
     let value = event.target.value;

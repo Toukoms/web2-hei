@@ -30,7 +30,7 @@ section#apart-section {
       border: 1px solid #333;
     }
 
-    & > div {
+    &>div {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -39,7 +39,7 @@ section#apart-section {
         font-size: 1rem;
         font-weight: 600;
       }
-    } 
+    }
   }
 
   & #apart-container {
