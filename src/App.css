@@ -1,0 +1,10 @@
+main {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & div.children {
+    flex: 1;
+  }
+}
