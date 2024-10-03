@@ -25,21 +25,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setFilteredAparts(() => {
-      let filteredApart = aparts.filter((apart) =>
-        apart.description.toLowerCase().includes(filterInput.search.toLowerCase())
-      );
-      return filteredApart;
-    });
-  }, [aparts, filterInput.search]);
-
-  useEffect(() => {
-    let maxPrice = 0
+    let maxPrice = 0;
     aparts.forEach((apart) => {
       if (apart.price > maxPrice) {
-        maxPrice = apart.price
+        maxPrice = apart.price;
       }
-    })
+    });
 
     setFilterInput((prevValue) => {
       return {
@@ -47,7 +38,20 @@ const Home = () => {
         "max-price": maxPrice,
       };
     });
+  }, [aparts]);
 
+  useEffect(() => {
+    setFilteredAparts(() => {
+      let filteredApart = aparts.filter((apart) =>
+        apart.description
+          .toLowerCase()
+          .includes(filterInput.search.toLowerCase())
+      );
+      return filteredApart;
+    });
+  }, [aparts, filterInput.search]);
+
+  useEffect(() => {
     setFilteredAparts(() => {
       let filteredApart = aparts.filter(
         (apart) =>
